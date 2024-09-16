@@ -1,0 +1,50 @@
+---
+## Setup/Install GVisor
+- name: Get runsc container runtime checksum
+  ansible.builtin.get_url:
+    url: "https://storage.googleapis.com/gvisor/releases/release/latest/{{ ansible_facts['ansible_architecture'] }}/containerd-shim-runsc-v1.sha512"
+    dest: "/tmp/containerd-shim-runsc-v1.sha512"
+    mode: '0755'
+    force: true
+
+- name: Load runsc data
+  ansible.builtin.slurp:
+    src: "/tmp/containerd-shim-runsc-v1.sha512"
+  register: runsc_sha
+
+- name: Get runsc container runtime
+  ansible.builtin.get_url:
+    url: "https://storage.googleapis.com/gvisor/releases/release/latest/{{ ansible_facts['ansible_architecture'] }}/containerd-shim-runsc-v1"
+    dest: "/usr/local/bin/runsc"
+    mode: '0755'
+    checksum: "{{ runsc_sha['content'] | b64decode }}"
+    force: true
+
+- name: Add containerd configuration
+  ansible.builtin.template:
+    src: containerd.toml.j2
+    dest: "/etc/containerd/config.toml"
+    owner: root
+    group: root
+    mode: 0644
+    force: true
+  notify: 'Restart container service'
+
+- name: Add runsc configuration
+  ansible.builtin.template:
+    src: runsc.toml.j2
+    dest: "{{ gvisor_options.config_path }}"
+    owner: root
+    group: root
+    mode: 0644
+    force: true
+  notify: 'Restart container service'
+
+- name: Reload systemctl daemon
+  ansible.builtin.systemd_service:
+    daemon_reload: true
+
+- name: Restart container service
+  ansible.builtin.systemd_service:
+    name: "{{ container_platform }}.service"
+    state: restarted
