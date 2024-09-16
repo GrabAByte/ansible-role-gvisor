@@ -1,0 +1,10 @@
+---
+---
+# Variable configuration.
+- ansible.builtin.include_tasks: variables.yml
+
+# Setup Containerd Service.
+- ansible.builtin.include_tasks: setup-containerd.yml
+
+# Install Runsc
+- ansible.builtin.include_tasks: gvisor.yml

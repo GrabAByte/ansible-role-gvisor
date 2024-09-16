@@ -1,0 +1,21 @@
+---
+## Setup/Install GVisor
+- name: Get runsc container runtime.
+  ansible.builtin.get_url:
+    url: "https://storage.googleapis.com/gvisor/releases/release/latest/{{ ansible_facts['ansible_architecture'] }}/containerd-shim-runsc-v1"
+    dest: "/usr/local/bin/containerd-shim-runsc-v1"
+    mode: '0755'
+    force: true
+---
+- name: Install runsc container runtime
+  ansible.builtin.command:
+    cmd: "/usr/local/bin/runsc install"
+
+- name: Reload systemctl daemon
+  ansible.builtin.systemd_service:
+    daemon_reload: true
+
+- name: Restart container service
+  ansible.builtin.systemd_service:
+    name: "{{ container_service }}.service"
+    state: restarted

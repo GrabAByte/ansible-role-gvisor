@@ -1,0 +1,16 @@
+---
+dependencies: []
+galaxy_info:
+  role_name: container_runtimes
+  version: 0.0.4
+  author: grababyte
+  description: Container runtime installations for Linux
+  license: "license (BSD, MIT)"
+  min_ansible_version: 2.4
+  platforms:
+    - name: EL
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
