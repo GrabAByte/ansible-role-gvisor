@@ -1,2 +1,10 @@
 ---
-container_service: "docker"
+container_platform: 'docker' # options: 'docker' or 'containerd'
+
+gvisor_options:
+  config_path: "/etc/containerd/runsc.toml"
+  shim_debug: true
+
+runsc_options:
+  debug: true
+  debug_log: "/var/log/%ID%/gvisor.log"

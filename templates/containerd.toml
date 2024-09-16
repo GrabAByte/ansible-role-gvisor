@@ -1,0 +1,8 @@
+disabled_plugins = ["restart"]
+[plugins.linux]
+  shim_debug = "{{ gvisor_options.shim_debug }}"
+[plugins.cri.containerd.runtimes.runsc]
+  runtime_type = "io.containerd.runsc.v1"
+[plugins.cri.containerd.runtimes.runsc.options]
+  TypeUrl = "io.containerd.runsc.v1.options"
+  ConfigPath = "{{ gvisor_options.config_path }}"

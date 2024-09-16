@@ -1,0 +1,6 @@
+[runsc_config]
+  debug="{{ runsc_options.debug }}"
+  debug-log="{{ runsc_options.debug_log }}"
+  {% if runsc_options.platform is defined and runsc_options.platform|d('')|length > 0 %}
+  platform = "{{ runsc_options.platform }}"
+  {% endif %}
