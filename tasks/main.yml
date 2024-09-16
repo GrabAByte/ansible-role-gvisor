@@ -1,6 +1,3 @@
 ---
-# Setup Containerd Service
+# Install and Configure gvisor
 - ansible.builtin.include_tasks: "{{ container_platform }}_setup.yml"
-
-# Install Runsc
-- ansible.builtin.include_tasks: gvisor.yml
