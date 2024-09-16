@@ -2,7 +2,7 @@
 dependencies: []
 galaxy_info:
   role_name: gvisor
-  version: 0.0.0
+  version: 0.1.0
   author: grababyte
   description: Gvisor installation for Linux
   license: "license (BSD, MIT)"
