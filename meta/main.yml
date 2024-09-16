@@ -1,10 +1,10 @@
 ---
 dependencies: []
 galaxy_info:
-  role_name: container_runtimes
-  version: 0.0.4
+  role_name: containerd
+  version: 0.0.0
   author: grababyte
-  description: Container runtime installations for Linux
+  description: Containerd installation for Linux
   license: "license (BSD, MIT)"
   min_ansible_version: 2.4
   platforms:
