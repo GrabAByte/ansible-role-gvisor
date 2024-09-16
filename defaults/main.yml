@@ -6,5 +6,6 @@ gvisor_options:
   shim_debug: true
 
 runsc_options:
+  platform:
   debug: true
   debug_log: "/var/log/%ID%/gvisor.log"
