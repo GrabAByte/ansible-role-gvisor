@@ -1,10 +1,10 @@
 ---
 dependencies: []
 galaxy_info:
-  role_name: containerd
+  role_name: gvisor
   version: 0.0.0
   author: grababyte
-  description: Containerd installation for Linux
+  description: Gvisor installation for Linux
   license: "license (BSD, MIT)"
   min_ansible_version: 2.4
   platforms:
