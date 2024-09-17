@@ -1,8 +1,6 @@
 # Ansible Role: GVisor
 Install and configure GVisor for Ubuntu and CentOS hosts
 
->> Test
-
 ## Requirements
 None
 
