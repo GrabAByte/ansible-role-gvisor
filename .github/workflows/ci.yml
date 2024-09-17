@@ -35,7 +35,7 @@ jobs:
       metadataPath: 'meta'
     needs: [yaml-lint, sonar-scan]  # molecule-test
   ansible-release:
-    uses: GrabAByte/github-devops-workflows/.github/workflows/ansibleRelease.yml@0.9.4
+    uses: GrabAByte/github-devops-workflows/.github/workflows/ansibleRelease.yml@fix/role-name
     secrets:
       GALAXY_TOKEN: ${{ secrets.GALAXY_TOKEN }}
     needs: update-version
