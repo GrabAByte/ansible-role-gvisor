@@ -2,7 +2,7 @@
 dependencies: []
 galaxy_info:
   role_name: ansible-role-gvisor
-  version: 0.1.0
+  version: 0.1.1
   author: grababyte
   description: Gvisor installation for Linux
   license: "license (BSD, MIT)"
