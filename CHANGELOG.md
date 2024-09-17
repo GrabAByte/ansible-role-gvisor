@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.1.2] - (17-09-2024)
+fix: (b0a1478) ansible galaxy compatibility (#4)
+
 ## [0.1.1] - (17-09-2024)
 fix: (86aea5f) ansible release job
 
