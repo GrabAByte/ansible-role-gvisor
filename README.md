@@ -1,17 +1,16 @@
 # Ansible Role: GVisor
-
 Install and configure GVisor for Ubuntu and CentOS hosts
 
 ## Requirements
 None
 
 ## Role Variables
+
 ## Dependencies
 
 None
 
 ## Example Playbook (using default package)
-
 ```
 - hosts: servers
   roles:
@@ -20,9 +19,7 @@ None
 ```
 
 ## License
-
 MIT / BSD
 
 ## Author Information
-
 This role was created in 2024 by GrabAByte
