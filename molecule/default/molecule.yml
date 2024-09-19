@@ -2,19 +2,31 @@
 dependency:
   name: galaxy
 driver:
-  name: docker
+  name: vagrant
+  provider:
+    name: virtualbox
 platforms:
   - name: instance
-    image: "${MOLECULE_IMAGE}"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    privileged: true
-    pre_build_image: true
+    box: ubuntu/trusty64
+    memory: 2048
+    cpus: 2
+    interfaces:
+      - network_name: private_network
+        ip: 192.168.50.20
+        guest: 80
+        host: 8080
+    provider_raw_config_args:
+      - "customize [ 'modifyvm', :id, '--natdnshostresolver1', 'on' ]"
+    config_options:
+      ssh.keep_alive: true
+      ssh.remote_user: "'vagrant'"
 provisioner:
   name: ansible
   playbooks:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
 lint: |
   set -e
+  yamllint .
   ansible-lint .
 scenario:
   name: default

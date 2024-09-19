@@ -17,9 +17,9 @@ jobs:
     with:
       yamlPath: .
     needs: get-version
-  # molecule-test:
-  # uses: GrabAByte/github-devops-workflows/.github/workflows/ansibleMolecule.yml@0.9.5
-  # needs: get-version
+  molecule-test:
+    uses: GrabAByte/github-devops-workflows/.github/workflows/ansibleMolecule.yml@0.9.5
+    needs: get-version
   sonar-scan:
     uses: GrabAByte/github-devops-workflows/.github/workflows/sonarScan.yml@0.9.5
     secrets:
